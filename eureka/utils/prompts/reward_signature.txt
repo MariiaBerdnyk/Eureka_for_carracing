@@ -1,0 +1,3 @@
+def compute_reward(self, action: Union[np.ndarray, int], truncated: bool, terminated: bool, step_reward: float) -> Tuple[bool, bool, float]:
+    ...
+    return truncated, terminated, reward

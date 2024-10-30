@@ -1,0 +1,3 @@
+task: CarRacing
+env_name: car_racing
+description: to make the car to finish the track as fast as possible without leaving the track

@@ -1,0 +1,13 @@
+Some helpful tips for writing the reward function code:
+1. Analyze Reward Trends and Components
+When to use: if your rewards have consistent negative values, indicating potential design issues.
+Tip: Identify if any reward components penalize too heavily or if the agent is consistently getting stuck in unfavorable states. Visualize each component’s impact on the total reward to identify outliers.
+2. Reward Shaping
+When to use: With small negative rewards throughout, the agent might struggle to learn effectively.
+Tip: Introduce intermediate rewards for partial successes to guide the agent toward the goal more smoothly (e.g., distance traveled or checkpoints). This can help mitigate sparse feedback.
+3. Check Action-Outcome Relationships
+When to use: If your actions and values show significant variation, which might indicate that some actions are underexplored.
+Tip: Encourage exploration with entropy regularization and/or a small initial reward bonus for less visited state-action pairs. This can help balance learning across the action space.
+4. Monitor Convergence and Reward Plateaus
+When to use: The rewards is to plateau (e.g., similar values across epochs).
+Tip: Consider introducing adaptive rewards based on the agent's performance, such as scaling rewards for better episodes. Also, compare learning rates and decay schedules to prevent premature convergence.
