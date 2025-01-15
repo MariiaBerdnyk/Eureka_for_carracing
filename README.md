@@ -1,27 +1,54 @@
-# Eureka: Human-Level Reward Design via Coding Large Language Models (ICLR 2024)
+# Eureka: Human-Level Reward Design via Coding Large Language Models (ICLR 2024) for Autonomous Vehicles gym environment
 
 <div align="center">
 
-[[Website]](https://eureka-research.github.io)
-[[arXiv]](https://arxiv.org/abs/2310.12931)
-[[PDF]](https://eureka-research.github.io/assets/eureka_paper.pdf)
+[[PDF]](./results/report_Eureka.pdf)
+[[Original Publication]](https://eureka-research.github.io/)
 
 [![Python Version](https://img.shields.io/badge/Python-3.8-blue.svg)](https://github.com/eureka-research/Eureka)
 [<img src="https://img.shields.io/badge/Framework-PyTorch-red.svg"/>](https://pytorch.org/)
-[![GitHub license](https://img.shields.io/github/license/eureka-research/Eureka)](https://github.com/eureka-research/Eureka/blob/main/LICENSE)
 ______________________________________________________________________
 
-https://github.com/eureka-research/Eureka/assets/21993118/1abb960d-321a-4de9-b311-113b5fc53d4a
-
-
-
-![](images/eureka.png)
+![](./results/agent_good.gif)
 </div>
 
-Large Language Models (LLMs) have excelled as high-level semantic planners for sequential decision-making tasks. However, harnessing them to learn complex low-level manipulation tasks, such as dexterous pen spinning, remains an open problem. We bridge this fundamental gap and present Eureka, a **human-level** reward design algorithm powered by LLMs. Eureka exploits the remarkable zero-shot generation, code-writing, and in-context improvement capabilities of state-of-the-art LLMs, such as GPT-4, to perform in-context evolutionary optimization over reward code. The resulting rewards can then be used to acquire complex skills via reinforcement learning. Eureka generates reward functions that outperform expert human-engineered rewards without any task-specific prompting or pre-defined reward templates. In a diverse suite of 29 open-source RL environments that include 10 distinct robot morphologies, Eureka outperforms human expert on **83\%** of the tasks leading to an average normalized improvement of **52\%**. The generality of Eureka also enables a new gradient-free approach to reinforcement learning from human feedback (RLHF), readily incorporating human oversight to improve the quality and the safety of the generated rewards in context. Finally, using Eureka rewards in a curriculum learning setting, we demonstrate for the first time a simulated five-finger Shadow Hand capable of performing pen spinning tricks, adeptly manipulating a pen in circles at human speed. 
+ On April 30, 2024, at ICLR, a new paper titled “Eureka: Human-Level Reward
+ Design via Coding Large Language Models” by Yecheng Jason Ma, William Liang,
+ Guanzhi Wang, De-An Huang, Osbert Bastani, Dinesh Jayaraman, Yuke Zhu, Linxi
+ “Jim” Fan, and Anima Anandkumar was published, attracting attention from 191 sites
+ by October 31, 2024.
 
-# Installation
-Eureka requires Python ≥ 3.8. We have tested on Ubuntu 20.04 and 22.04.
+ The Eureka algorithm leverages state-of-the-art large language models (LLMs) like
+ GPT-4 for zero-shot generation, code-writing, and in-context improvement, applying
+ these capabilities to evolutionary optimization over reward code. The generated
+ rewards help train agents to acquire complex skills via reinforcement learning,
+ outperforming expert human-engineered rewards without any task-specific prompting
+ or predefined reward templates.
+
+##  Context and Goal
+The authors suggest this algorithm can extend to various environments to
+enhance agent performance by generating new reward functions. Our objective was to
+validate this claim by applying the Eureka algorithm to a complex stochastic gym
+environment, [CarRacing](https://www.gymlibrary.dev/environments/box2d/car_racing/), where the agent’s primary goal is to complete the track as
+quickly and steadily as possible.
+The CarRacing environment is considered inherently stochastic due to the following
+factors:
+
+* Track Variability: The environment generates procedurally different
+tracks for each episode, requiring the agent to adapt its driving skills to handle
+various terrains and turns instead of memorising a single track.
+* Physics and Control Variability: Small changes in physics calculations
+(e.g., friction, acceleration) and control precision can yield different
+trajectories, especially at high speeds.
+ 
+Designing a reward function for this environment is non-trivial, as the reward depends
+on multiple factors, including the agent's speed, position, acceleration, friction, and
+steering. Effective reward construction is essential to guide the agent in completing
+the track efficiently and stably- something not feasible with manual reward
+engineering
+
+## Installation
+Eureka requires Python ≥ 3.8. We have tested on Windows 11.
 
 1. Create a new conda environment with:
     ```
@@ -40,7 +67,6 @@ pip install -e .
 ```
 cd rl-baselines3-zoo; pip install -e .
 ```
-
 
 # Getting Started
 
